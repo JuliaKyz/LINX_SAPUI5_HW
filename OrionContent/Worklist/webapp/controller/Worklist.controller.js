@@ -5,6 +5,7 @@ sap.ui.define([
 		"zjblessons/Worklist/model/formatter",
 		"sap/m/Table",
 		"sap/ui/model/Filter",
+		"sap/ui/model/Sorter",
 		"sap/ui/model/FilterOperator"
 	], function (BaseController, JSONModel, formatter, Table, Filter, FilterOperator) {
 		"use strict";
@@ -15,9 +16,73 @@ sap.ui.define([
 
 			onInit : function () {
 				const oViewModel = new JSONModel({
-				
+					sCount: '0'
 				});
 				this.setModel(oViewModel, "worklistView");
+			},
+			
+			onBeforeRendering: function() {
+				this._bindTable();
+			},
+			
+			_bindTable(){
+				const oTable = this.getView().byId('table');
+				
+				oTable.bindItems({
+					path: '/zjblessons_base_Headers',
+					sorter: [new Sorter('Created', true)],
+					template: this._getTableTemplate(),
+					urlParameters: {
+						$select: 'HeaderID,DocumentNumber,DocumentDate,PlantText,RegionText,Description,Created'
+					},
+					events:
+						dataRequested: (oData) => {
+							this._getTabeCounter();
+						}
+					}
+				})
+			},
+			
+			getTableCounter(){
+				this.getModel().read('/zjblessons_base_Headers/$count', {
+					success: (sCount => {
+						this.getModel('worklistView').setProperty('/sCount', sCont);
+					}
+				})
+			},
+			
+			_getTableTemplate(){
+				const oTemplate = new sap.m.ColumnListItem({
+					type: 'Navigation',
+					navigated: true,
+					cells: [
+						new sap.m.Text({
+							text: '{DocumentNumber}'
+						}),
+							new sap.m.Text({
+							text: '{DocumentDate}'
+						}),
+							new sap.m.Text({
+							text: '{PlantText}'
+						}),
+							new sap.m.Text({
+							text: '{RegionText}'
+						}),
+							new sap.m.Text({
+							text: '{Description}'
+						}),
+							new sap.m.Text({
+							text: '{Created}'
+						}),
+						new sap.m.Button({
+							type: 'Transparent',
+							icon: this.getResourceBundle().getText('iDecline'),
+							press: this.onPressDelete.bind(this)
+						})
+					]
+				})
+				
+				return oTemplate;
 			},
 			
 			onSearch(oEvent){

@@ -3,33 +3,22 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 
-	<Page>
-			<customHeader>
-				<Bar>
-					<contentLeft>
-						<Title text="Worklist"/>
-					</contentLeft>
-				</Bar>
-			</customHeader>
+	<Page
+		showHeader="false"
+	>
+		
 			
 			
 		<Table
 				id="table"
 				width="auto"
-				items="{
-					path: '/zjblessons_base_Headers',
-					sorter: {
-						path: 'DocumentDate',
-						descending: false
-					}
-				}"
 				growing="true"
 				growingThreshold='15'
 				growingScrollToLoad="true">
 
 				<headerToolbar>
 					<Toolbar>
-						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<Title id="tableHeader" text="{=(${worklistView>/sCount})}"/>
 						<ToolbarSpacer />
 						<SearchField
 							tooltip="{i18n>worklistSearchTooltip}"
@@ -59,35 +48,13 @@
 						<Column>
 						<Text text="{i18n>tableCreatedColumnTitle}" />
 				</Column>
+					<Column width="2%">
+						<Text text="" />
+				</Column width="10%">
 					
 				</columns>
 
-				<items>
-					<ColumnListItem
-						type="Navigation"
-						press="onPress">
-						<cells>
-							<ObjectIdentifier
-								title="{DocumentNumber}"/>
-							<ObjectIdentifier
-								title="{DocumentDate}"/>
-							<ObjectIdentifier
-								title="{PlantText}"/>
-							<ObjectIdentifier
-								title="{RegionText}"/>
-							<ObjectIdentifier
-								title="{Description}"/>
-							<ObjectIdentifier
-								title="{
-							path: 'Created',
-							type: 'sap.ui.model.type.Date',
-							formatOptions: {
-								style: 'short'
-							}
-							}"/>
-						</cells>
-					</ColumnListItem>
-				</items>
+				
 			</Table>
 	
 	</Page>
