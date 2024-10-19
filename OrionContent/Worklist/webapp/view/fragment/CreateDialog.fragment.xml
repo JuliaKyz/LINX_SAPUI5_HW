@@ -1,0 +1,51 @@
+<c:FragmentDefinition
+xmlns="sap.m"
+xmlns:c="sap.ui.core"
+>
+	<Dialog
+	title="Create header">
+		<content>
+		<VBox>
+			<VBox>
+				<Label labelFor="idHeaderID"/>
+				<Input 
+					value="{HeaderID}"
+					id="idHeaderID"
+				/>
+			</VBox>
+			<VBox>
+				<Label labelFor="idDocumentNumber"/>
+				<Input 
+				value="{DocumentNumber}"
+				id="idDocumentNumber"
+				/>
+			</VBox>
+			<VBox>
+				<Label labelFor="idPlantID"/>
+				<Input 
+				value="{PlantID}"
+				id="idPlantID"
+				/>
+			</VBox>
+				<VBox>
+				<Label labelFor="idPlantText"/>
+				<Input 
+				value="{PlantText}"
+				id="idPlantText"
+				/>
+			</VBox>
+				<VBox>
+				<Label labelFor="idDescription"/>
+				<TextArea
+				rows="3"
+				maxLength="256"
+				value="{Description}"
+				id="idDescription"
+				/>
+			</VBox>
+			
+		</VBox>
+		</content>
+		
+	</Dialog>
+</c:FragmentDefinition>

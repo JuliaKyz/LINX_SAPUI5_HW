@@ -29,61 +29,54 @@ sap.ui.define([
 				
 				oTable.bindItems({
 					path: '/zjblessons_base_Headers',
-					sorter: [new Sorter('Created', true)],
+					// sorter: [new Sorter('Created', true)],
 					template: this._getTableTemplate(),
 					urlParameters: {
 						$select: 'HeaderID,DocumentNumber,DocumentDate,PlantText,RegionText,Description,Created'
 					},
 					events: {
-						dataReceived: (oData) => {
-					},
 						dataRequested: (oData) => {
-							this._getTabeCounter();
+							this._getTableCounter();
 						}
 					}
 				})
 			},
 			
-			getTableCounter(){
+			_getTableCounter(){
 				this.getModel().read('/zjblessons_base_Headers/$count', {
 					success: (sCount => {
-						this.getModel('worklistView').setProperty('/sCount', sCont);
+						this.getModel('worklistView').setProperty('/sCount', sCount);
 					}
+					)
 				})
 			},
 			
-			_getTableTemplate(){
-				const oTemplate = new sap.m.ColumnListItem({
-					type: 'Navigation',
-					navigated: true,
-					cells: [
-						new sap.m.Text({
-							text: '{DocumentNumber}'
-						}),
-							new sap.m.Text({
-							text: '{DocumentDate}'
-						}),
-							new sap.m.Text({
-							text: '{PlantText}'
-						}),
-							new sap.m.Text({
-							text: '{RegionText}'
-						}),
-							new sap.m.Text({
-							text: '{Description}'
-						}),
-							new sap.m.Text({
-							text: '{Created}'
-						}),
-						new sap.m.Button({
-							type: 'Transparent',
-							icon: this.getResourceBundle().getText('iDecline'),
-							press: this.onPressDelete.bind(this)
-						}),
-					]
-				})
-				
-				return oTemplate;
+			_getTableTemplate() {
+    			const oTemplate = new sap.m.ColumnListItem({
+        			type: 'Navigation',
+        			cells: [
+            			new sap.m.Text({ text: '{DocumentNumber}' }),
+            			new sap.m.Text({ text: '{DocumentDate}' }),
+            			new sap.m.Text({ text: '{PlantText}' }),
+            			new sap.m.Text({ text: '{RegionText}' }),
+            			new sap.m.Text({ text: '{Description}' }),
+            			new sap.m.Text({ text: '{Created}' }),
+            			new sap.m.Button({
+                			type: 'Transparent',
+                			icon: this.getResourceBundle().getText('iDecline'),
+                			press: this.onPressDelete.bind(this)
+            			})
+        			]
+    		});
+    		return oTemplate;
+			},
+			
+			onPressDelete(oEvent){
+				const oBindingContext = oEvent.getSource().getBindingContext(),
+				sKey = this.getModel().createKey('/zjblessons_base_Headers', {
+					HeaderID: oBindingContext.getProperty('HeaderID')
+				});
+				this.getModel().remove(sKey);
 			},
 			
 			onSearch(oEvent){
@@ -102,6 +95,14 @@ sap.ui.define([
 					 
 					 oTable.getBinding('items').filter(oFilter);
 			},
+			
+			onPressRefresh(){
+				this._bindTable();
+			},
+			
+			onPressCreate(){
+				
+		},
 		});
 	}
 );

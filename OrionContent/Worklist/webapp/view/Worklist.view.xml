@@ -4,8 +4,9 @@
 	xmlns:mvc="sap.ui.core.mvc">
 
 	<Page
-		showHeader="false"
+		showHeader="true"
 	>
+		
 		
 			
 			
@@ -19,38 +20,49 @@
 				<headerToolbar>
 					<Toolbar>
 						<Title id="tableHeader" text="({=${worklistView>/sCount}})"/>
-						<ToolbarSpacer />
 						<SearchField
 							tooltip="{i18n>worklistSearchTooltip}"
-							
-							liveChange="onLiveSearch"
+							showSearchButton='false'
+							change='onSearch'
+							liveChange='onLiveSearch'
 							width="auto">
 						</SearchField>
-					</Toolbar>
+							<ToolbarSpacer/>
+							<Button
+							icon="sap-icon://add"
+							type="Emphasized"
+							press="onPressCreate"
+							/>
+							<Button
+							icon="sap-icon://refresh"
+							type="Transparent"
+							press="onPressRefresh"
+							/>
+						</Toolbar>
 				</headerToolbar>
 
 				<columns>
 					<Column>
-						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+						<Text text="DocumentNumber">
 					</Column>
 						<Column>
-						<Text text="{i18n>tableDateColumnTitle}" />
+						<Text text="DocumentDate" />
 					</Column>
 						<Column>
-						<Text text="{i18n>tablePlantColumnTitle}" />
+						<Text text="PlantText" />
 					</Column>
 						<Column>
-						<Text text="{i18n>tableRegionColumnTitle}" />
+						<Text text="RegionText" />
 					</Column>
 						<Column>
-						<Text text="{i18n>tableDescriptionColumnTitle}" />
+						<Text text="Description" />
 					</Column>
 						<Column>
-						<Text text="{i18n>tableCreatedColumnTitle}" />
+						<Text text="Created" />
 				</Column>
 					<Column width="2%">
 						<Text text="" />
-				</Column width="10%">
+				</Column>
 					
 				</columns>
 
