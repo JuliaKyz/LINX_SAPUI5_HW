@@ -3,11 +3,10 @@ sap.ui.define([
 		"zjblessons/Worklist/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
 		"zjblessons/Worklist/model/formatter",
-		"sap/m/Table",
 		"sap/ui/model/Filter",
 		"sap/ui/model/Sorter",
 		"sap/ui/model/FilterOperator"
-	], function (BaseController, JSONModel, formatter, Table, Filter, FilterOperator) {
+	], function (BaseController, JSONModel, formatter, Filter, FilterOperator) {
 		"use strict";
 
 		return BaseController.extend("zjblessons.Worklist.controller.Worklist", {
@@ -35,7 +34,9 @@ sap.ui.define([
 					urlParameters: {
 						$select: 'HeaderID,DocumentNumber,DocumentDate,PlantText,RegionText,Description,Created'
 					},
-					events:
+					events: {
+						dataReceived: (oData) => {
+					},
 						dataRequested: (oData) => {
 							this._getTabeCounter();
 						}
@@ -78,7 +79,7 @@ sap.ui.define([
 							type: 'Transparent',
 							icon: this.getResourceBundle().getText('iDecline'),
 							press: this.onPressDelete.bind(this)
-						})
+						}),
 					]
 				})
 				
@@ -97,10 +98,10 @@ sap.ui.define([
 			
 			_searchHeandler(sValue){
 				const oTable = this.getView().byId('table'),
-					 oFilter = [new Filter('DocumentNumber', FilterOperator.Contains, sValue)];
+					 oFilter = !!sValue.length ? [new Filter('DocumentNumber', FilterOperator.Contains, sValue), new Filter('DocumentNumber', FilterOperator.Contains, sValue)] : [];
 					 
 					 oTable.getBinding('items').filter(oFilter);
-			}
+			},
 		});
 	}
 );

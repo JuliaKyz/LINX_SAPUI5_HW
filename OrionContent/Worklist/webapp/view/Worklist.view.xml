@@ -18,7 +18,7 @@
 
 				<headerToolbar>
 					<Toolbar>
-						<Title id="tableHeader" text="{=(${worklistView>/sCount})}"/>
+						<Title id="tableHeader" text="({=${worklistView>/sCount}})"/>
 						<ToolbarSpacer />
 						<SearchField
 							tooltip="{i18n>worklistSearchTooltip}"
@@ -60,8 +60,4 @@
 	</Page>
 
 		
-
-
-	
-
 </mvc:View>
