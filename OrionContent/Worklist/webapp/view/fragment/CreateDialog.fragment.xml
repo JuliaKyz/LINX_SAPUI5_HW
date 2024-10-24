@@ -1,8 +1,9 @@
+
 <c:FragmentDefinition
 xmlns="sap.m"
 xmlns:c="sap.ui.core"
 >
-	<Dialog class='sapUiContentPadding'title="Create header">
+	<Dialog class='sapUiContentPadding' beforeOpen="onDialogBeforeOpen" title="Create header">
 		<content>
 		<VBox>
 			<VBox>
@@ -25,13 +26,13 @@ xmlns:c="sap.ui.core"
 				value="{PlantID}"
 				id="idPlantID"
 				/>
-			</VBox>
-				<VBox>
-				<Label text='PlantText' labelFor="idPlantText"/>
-				<Input 
-				value="{PlantText}"
-				id="idPlantText"
-				/>
+			<!--</VBox>-->
+			<!--	<VBox>-->
+			<!--	<Label text='PlantText' labelFor="idPlantText"/>-->
+			<!--	<Input -->
+			<!--	value="{PlantText}"-->
+			<!--	id="idPlantText"-->
+			<!--	/>-->
 			</VBox>
 				<VBox>
 				<Label text='Description' labelFor="idDescription"/>

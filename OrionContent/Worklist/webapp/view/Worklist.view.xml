@@ -1,18 +1,17 @@
+
 <mvc:View
 	controllerName="zjblessons.Worklist.controller.Worklist"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 
 	<Page
-		showHeader="true"
+		showHeader="false"
 	>
-		
-		
-			
-			
+	
 			<Table
 				id="table"
 				width="auto"
+				itemPress='onItemSelect'
 				growing="true"
 				growingThreshold='15'
 				growingScrollToLoad="true">

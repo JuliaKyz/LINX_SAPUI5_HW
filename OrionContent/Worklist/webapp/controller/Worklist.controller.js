@@ -106,7 +106,8 @@ sap.ui.define([
 			},
 			
 			_loadCreateDialog: async function(){
-				this._oDialog = await Fragment.load({
+				id: this.getView().getId()
+				}).then._oDialog = await Fragment.load({
 					name: 'zjblessons.Worklist.view.fragment.CreateDialog',
 					controller: this,
 					id: this.getView().getId()
@@ -119,13 +120,45 @@ sap.ui.define([
 			// this.getView().byId('Dialog', 'idPlantID')
 			},
 			
+			onDialogBeforeOpen(oEvent){
+				const oDialog = oEvent.getSource(),
+				oParams = {
+					Version: 'A',
+					HeaderID: '0',
+					Created: new Date(),
+					IntegrationId: null
+				},
+				oEntry = this.getModel().createEntry('/tHeaders', {
+					properties: oParams
+				
+				});
+				
+				oDialog.setBindingContext(oEntry);
+			},
+			
 			onPressCancel(){
 				this.getModel().resetChanges()
 				this._oDialog.close();
 			},
 			
-			onPressSave(){
+			onPressSave(oEvent){
+				this.getModel().submitChanges({
+					success: => {
+						MessageToast.show('Created')
+						this._bindTable();
+					}
+				});
+				
 				this._oDialog.close();
+			},
+			
+			onItemSelect(oEvent){
+				const oSelectItem = oEvent.getParameter('listItem'),
+				sHeaderID = oSelectedItem.getBindingContext().getProperty('HeaderID');
+				
+				this.getRouter().navTo('object, {
+					objectId: sHeaderID'
+					})
 			}
 		});
 	}
