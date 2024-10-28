@@ -1,7 +1,10 @@
 {
     "FullName": "Orion Content",
     "OrionVersion": 8,
-    "ProjectNames": ["Worklist"],
+    "ProjectNames": [
+        "Worklist",
+        "sap.f.tutorial.fiori2.13"
+    ],
     "Properties": {},
     "UniqueId": "JuliaK-OrionContent",
     "UserId": "JuliaK"
