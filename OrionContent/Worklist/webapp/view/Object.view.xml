@@ -5,7 +5,6 @@
 
 	<Page
 		showFooter="false"
-		title-"{DocumentNumber}"
 	>
 		<customHeader>
 			<Bar>
@@ -14,7 +13,6 @@
 					icon="spa-icon://nav-back"
 						type="Transparent"
 						press="onNavBack"
-							
 					/>
 						
 					<Title>
@@ -23,8 +21,8 @@
 				</contentLeft>
 				<contentRight>
 					<Button type="Emphasized" press='onPressEdit' text="Edit" icon="sap-icon://edit" visible="{= !${worklistView>/bEditMode}}"/>
-					<Button type="Emphasized" text="onPressSave" icon="sap-icon://save" visible="{= ${worklistView>/bEditMode}}"/>
-					<Button type="Transparent" text="onPressCancel" icon="sap-icon://reset" visible="{= ${worklistView>/bEditMode}}"/>
+					<Button type="Emphasized" press='onPressSave' icon="sap-icon://save" visible="{= ${worklistView>/bEditMode}}"/>
+					<Button type="Transparent" press='onPressSaveCancel' icon="sap-icon://reset" visible="{= ${worklistView>/bEditMode}}"/>
 						
 				</contentRight>
 			</Bar>

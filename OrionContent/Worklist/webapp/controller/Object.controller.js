@@ -18,9 +18,7 @@ sap.ui.define([
 
 		
 			onInit : function () {
-				
-				const iOriginalBusyDelay,
-					oViewModel = new JSONModel({
+					const oViewModel = new JSONModel({
 						busy : true,
 						delay : 0,
 						bEditMode: false,
@@ -30,13 +28,9 @@ sap.ui.define([
 				this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 				
 				this.setModel(oViewModel, "objectView");
-				
 					},
-				);
-			},
-
-		
-
+				
+			
 			onNavBack : function() {
 				var sPreviousHash = History.getInstance().getPreviousHash();
 
@@ -93,9 +87,22 @@ sap.ui.define([
 			},
 			
 			onPressEdit(){
+				this._setEditModel(true);
+			},
+			
+			onPressSave(){
+				this._setEditModel(false);
+			},
+			
+			onPressSaveCancel(){
+				this._setEditModel(false);
+			},
+			
+			_setEditModel(bValue){
 				const oModel = this.getModel("objectView");
-				oModel.setProperty('/bEditMode', true);
+				
 			}
+			
 
 			
 
