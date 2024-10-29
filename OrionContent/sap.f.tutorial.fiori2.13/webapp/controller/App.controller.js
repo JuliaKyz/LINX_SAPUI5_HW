@@ -16,7 +16,7 @@ sap.ui.define([
 
 			this._updateUIElements();
 
-			// Save the current route name
+
 			this.currentRouteName = sRouteName;
 			this.currentProduct = oArguments.product;
 			this.currentSupplier = oArguments.supplier;
@@ -28,13 +28,13 @@ sap.ui.define([
 
 			this._updateUIElements();
 
-			// Replace the URL with the new layout if a navigation arrow was used
+			
 			if (bIsNavigationArrow) {
 				this.oRouter.navTo(this.currentRouteName, {layout: sLayout, product: this.currentProduct, supplier: this.currentSupplier}, true);
 			}
 		},
 
-		// Update the close/fullscreen buttons visibility
+	
 		_updateUIElements: function () {
 			var oModel = this.oOwnerComponent.getModel(),
 				oUIState;

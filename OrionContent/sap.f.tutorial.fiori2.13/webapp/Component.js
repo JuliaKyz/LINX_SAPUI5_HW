@@ -1,9 +1,10 @@
 sap.ui.define([
 	'sap/ui/core/UIComponent',
-	'sap/ui/model/json/JSONModel',
+	// 'sap/ui/model/json/JSONModel',
+	'sap/ui/model/odata/v2/ODataModel', 
 	'sap/f/FlexibleColumnLayoutSemanticHelper',
 	'sap/f/library'
-], function(UIComponent, JSONModel, FlexibleColumnLayoutSemanticHelper, fioriLibrary) {
+], function(UIComponent, ODataModel, FlexibleColumnLayoutSemanticHelper, fioriLibrary) {
 	'use strict';
 
 	return UIComponent.extend('sap.ui.demo.fiori2.Component', {
@@ -14,19 +15,15 @@ sap.ui.define([
 
 		init: function () {
 			var oModel,
-				oProductsModel,
 				oRouter;
 
 			UIComponent.prototype.init.apply(this, arguments);
 
-			oModel = new JSONModel();
+			oModel = new ODataModel("https://212.98.189.156:12490/jetCloud/apps/zjblessons/jblesson02/v01/01.xsodata"); 
+			// oModel = new ODataModel("https://openui5.hana.ondemand.com/1.129.0/resources/sap-ui-core.js");//создаю модель
+			oModel.setSizeLimit(1000);
 			this.setModel(oModel);
-
-			// set products demo model on this sample
-			oProductsModel = new JSONModel(sap.ui.require.toUrl('sap/ui/demo/mock/products.json'));
-			oProductsModel.setSizeLimit(1000);
-			this.setModel(oProductsModel, 'products');
-
+			
 			oRouter = this.getRouter();
 			oRouter.attachBeforeRouteMatched(this._onBeforeRouteMatched, this);
 			oRouter.initialize();
@@ -49,7 +46,7 @@ sap.ui.define([
 				sLayout = oEvent.getParameters().arguments.layout,
 				oNextUIState;
 
-			// If there is no layout parameter, query for the default level 0 layout (normally OneColumn)
+			
 			if (!sLayout) {
 				this.getHelper().then(function(oHelper) {
 					oNextUIState = oHelper.getNextUIState(0);

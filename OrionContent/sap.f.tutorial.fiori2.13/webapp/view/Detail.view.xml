@@ -129,14 +129,14 @@
 						<blocks>
 							<m:Table
 								id="suppliersTable"
-								items="{path : 'products>/ProductCollectionStats/Filters/1/values'}">
+								items="{path : '/zjblessons_base_ItemsType'}">
 								<m:columns>
 									<m:Column/>
 								</m:columns>
 								<m:items>
 									<m:ColumnListItem type="Navigation" press=".onSupplierPress">
 										<m:cells>
-											<m:ObjectIdentifier text="{products>text}"/>
+											<m:ObjectIdentifier text="{HeaderID}"/>
 										</m:cells>
 									</m:ColumnListItem>
 								</m:items>
