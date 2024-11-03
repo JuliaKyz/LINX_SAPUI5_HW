@@ -1,35 +1,31 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MasterDetail</title>
 
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta charset="UTF-8">
+	<script id="sap-ui-bootstrap"
+	src="https://openui5.hana.ondemand.com/1.120.11/resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_horizon"
+		data-sap-ui-resourceroots='{
+			"MasterDetail": "./",
+			"sap.ui.demo.mock": "https://sdk.openui5.org/test-resources/sap/ui/documentation/sdk/"
+		}'
+		data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true"
+		data-sap-ui-frameOptions="trusted">
+	</script>
+</head>
 
-		<title>SAPUI5App</title>
-
-		<script id="sap-ui-bootstrap"
-			src="../../resources/sap-ui-core.js"
-			data-sap-ui-libs="sap.m"
-			data-sap-ui-theme="sap_horizon"
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-resourceroots='{"SAPUI5App": ""}'>
-		</script>
-
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-
-		<script>
-			sap.ui.getCore().attachInit(function() {
-				new sap.m.Shell({
-					app: new sap.ui.core.ComponentContainer({
-						height : "100%",
-						name : "SAPUI5App"
-					})
-				}).placeAt("content");
-			});
-		</script>
-	</head>
-
-	<body class="sapUiBody" id="content">
-	</body>
-
+<body class="sapUiBody sapUiSizeCompact">
+	<div data-sap-ui-component
+		data-name="MasterDetail"
+		data-height="100%"
+		data-id="container"
+		data-settings='{"id" : "fiori2"}'
+		style="height: 100%">
+	</div>
+</body>
 </html>
