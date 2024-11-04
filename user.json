@@ -3,7 +3,7 @@
     "OrionVersion": 8,
     "Properties": {
         "Email": "yuliya.kyzyurava@gmail.com",
-        "LastLoginTimestamp": "1730666594202",
+        "LastLoginTimestamp": "1730752208188",
         "Password": "x_krkk7FsPE=,p_diI07CZttzYn1mhiGJ_qKAEQUinkpW",
         "UserRights": [
             {
@@ -29,12 +29,12 @@
         ],
         "UserRightsVersion": "3",
         "watt/appdescriptorMulti/ilastTabIndex": "1",
-        "watt/sap.watt.common.content.service.ContentServicePersistence/activetab": "{\"editor\":\"appdescriptorMulti\",\"keystring\":\"file:/SAPUI5App/webapp/manifest.json:workspace\"}",
-        "watt/sap.watt.common.content.service.ContentServicePersistence/tabs": "[{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/controller/View1.controller.js:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/controller/App.controller.js:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/controller/Detail.controller.js:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/controller/Master.controller.js:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/view/fragment/CreateItem.fragment.xml:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/view/App.view.xml:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/view/Detail.view.xml:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/view/Master.view.xml:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/Component.js:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/index.html:workspace\"},{\"editor\":\"appdescriptorMulti\",\"keystring\":\"file:/SAPUI5App/webapp/manifest.json:workspace\"}]",
+        "watt/sap.watt.common.content.service.ContentServicePersistence/activetab": "{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/controller/App.controller.js:workspace\"}",
+        "watt/sap.watt.common.content.service.ContentServicePersistence/tabs": "[{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/controller/View1.controller.js:workspace\"},{\"editor\":\"aceeditor\",\"keystring\":\"file:/SAPUI5App/webapp/controller/App.controller.js:workspace\"}]",
         "watt/sap.watt.common.content.service.ContentServicePersistence/version": "1",
-        "watt/sap.watt.common.plugin.platform.service.keepalive.KeepAlive/nLastLogonTimestamp": "1730666876274",
+        "watt/sap.watt.common.plugin.platform.service.keepalive.KeepAlive/nLastLogonTimestamp": "1730752276238",
         "watt/sap.watt.common.plugin.run.service.history/configurationNames": "{\"487927\":{\"displayName\":\"Run index.html\",\"projectPath\":\"/sap.f.tutorial.fiori2.13\"},\"7466013\":{\"displayName\":\"App\",\"projectPath\":\"/Worklist\"},\"1124761\":{\"displayName\":\"Run index.html\",\"projectPath\":\"/SAPUI5App\"}}",
-        "watt/sap.watt.common.plugin.run.service.history/runConfigurations": "[{\"_metadata\":{\"lastRunTimeStamp\":1730670292816,\"displayName\":\"Run index.html\",\"projectPath\":\"/SAPUI5App\",\"runnerId\":\"webapprunner\",\"id\":1124761}},{\"_metadata\":{\"lastRunTimeStamp\":1730396032384,\"displayName\":\"Run index.html\",\"projectPath\":\"/sap.f.tutorial.fiori2.13\",\"runnerId\":\"webapprunner\",\"id\":487927}},{\"_metadata\":{\"lastRunTimeStamp\":1730022087620,\"displayName\":\"App\",\"projectPath\":\"/Worklist\",\"runnerId\":\"webapprunner\",\"id\":\"7466013\"}}]",
+        "watt/sap.watt.common.plugin.run.service.history/runConfigurations": "[{\"_metadata\":{\"lastRunTimeStamp\":1730752294361,\"displayName\":\"Run index.html\",\"projectPath\":\"/SAPUI5App\",\"runnerId\":\"webapprunner\",\"id\":1124761}},{\"_metadata\":{\"lastRunTimeStamp\":1730396032384,\"displayName\":\"Run index.html\",\"projectPath\":\"/sap.f.tutorial.fiori2.13\",\"runnerId\":\"webapprunner\",\"id\":487927}},{\"_metadata\":{\"lastRunTimeStamp\":1730022087620,\"displayName\":\"App\",\"projectPath\":\"/Worklist\",\"runnerId\":\"webapprunner\",\"id\":\"7466013\"}}]",
         "watt/sap.watt.common.plugin.welcomescreen.service.Version/localhost:8090": "v_181220",
         "watt/sap.watt.common.repositorybrowser.service.RepositoryBrowserPersistence/linked": "false",
         "watt/sap.watt.common.repositorybrowser.service.RepositoryBrowserPersistence/nodes": "[\"folder::workspace\",\"folder:/SAPUI5App:workspace\",\"folder:/SAPUI5App/webapp:workspace\"]",
