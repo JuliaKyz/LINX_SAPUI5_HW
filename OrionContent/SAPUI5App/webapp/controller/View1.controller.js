@@ -1,9 +1,10 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
+	"sap/ui/core/mvc/Controller",
+	'sap/ui/core/Fragment'
+], function(Controller, Fragment) {
 	"use strict";
 
-	return Controller.extend("SAPUI5App.controller.View1", {
+	return Controller.extend("FormRegistration.controller.View1", {
 		onInit: function() {
 			this.oName = this.getView().byId("idName");
 			this.oSurname = this.getView().byId("idSurname");
@@ -26,6 +27,31 @@ sap.ui.define([
 			} else {
 				this.oPromocode.setEnabled(true);
 			}
+		},
+
+		onLogoPress: async function(oEvent) {
+			const oButton = oEvent.getSource(),
+						oView = this.getView();
+
+			if (!this._pPopover) {
+					this._pPopover = Fragment.load({
+							id: oView.getId(),
+							name: "FormRegistration.view.fragment.OpenPopover",
+							controller: this
+					}).then(function(oPopover) {
+							oView.addDependent(oPopover);
+							return oPopover;
+					});
+			}
+
+			const oPopover = await this._pPopover;
+			oPopover.openBy(oButton);
+		},
+
+		onMenuItemPress: function(oEvent) {
+			const itemText = oEvent.getSource().getTitle();
+
+			sap.m.MessageToast.show(itemText);
 		},
 
 		_checkPromocode: function(promocode, oResourceBundle) {
@@ -104,14 +130,6 @@ sap.ui.define([
 			}
 		},
 
-		_onOpenUsersAgreement: function() {
-			window.open("pdf/UsersAgreement.pdf", "_blank");
-		},
-
-		_onOpenPlatformRules: function() {
-			window.open("pdf/PlatformRules.pdf", "_blank");
-		},
-
 		_onCheckboxSelect: function(oEvent) {
 			const oCheckbox = oEvent.getSource();
 			this.oRegisterButton.setEnabled(oCheckbox.getSelected());
@@ -139,7 +157,6 @@ sap.ui.define([
 			this.oPassword.setValueState("None");
 			this.oConfirmPassword.setValueState("None");
 			this.oPromocode.setValueState("None");
-			this.oPromocode.setEnabled(true);
 		},
 		
 		_onRegisterButtonPress: function() {
@@ -165,6 +182,17 @@ sap.ui.define([
 					firstInvalidField = field;
         }
     	}
+
+			if (this.oPassword.getValue() !== this.oConfirmPassword.getValue()) {
+        bValid = false;
+        this.oConfirmPassword.setValueState("Error");
+        this.oConfirmPassword.setValueStateText(oResourceBundle.getText("PasswordsDoNotMatchMessage"));
+        if (!firstInvalidField) {
+            firstInvalidField = this.oConfirmPassword;
+        }
+			} else {
+					this.oConfirmPassword.setValueState("None");
+			}
 
 			if (!bValid && firstInvalidField) {
         firstInvalidField.focus();
@@ -206,6 +234,20 @@ sap.ui.define([
 			this.oPromocode.setValue("");
 			this.oCheckbox.setSelected(false);
 			this.oRegisterButton.setEnabled(false);
+			this.oPromocode.setEnabled(true);
+		},
+
+		onTelegramPress: function() {
+			window.open("https://t.me/", "_blank");
+		},
+		
+		onInstagramPress: function() {
+				window.open("https://www.instagram.com/", "_blank");
+		},
+		
+		onYouTubePress: function() {
+				window.open("https://www.youtube.com", "_blank");
 		}
+
 	});
 });

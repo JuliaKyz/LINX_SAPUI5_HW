@@ -4,7 +4,8 @@
     "ProjectNames": [
         "Worklist",
         "sap.f.tutorial.fiori2.13",
-        "SAPUI5App"
+        "SAPUI5App",
+        "FormRegistration"
     ],
     "Properties": {},
     "UniqueId": "JuliaK-OrionContent",

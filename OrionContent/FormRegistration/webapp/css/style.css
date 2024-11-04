@@ -1,0 +1,10 @@
+.wrapLink {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.customFooter {
+  background-color: #87CEFA;
+}
+/* Enter your custom styles here */
