@@ -1,87 +1,148 @@
 <mvc:View
-  controllerName="zjblessons.Worklist.controller.Worklist"
+  controllerName="Lab_13.Lab_13.controller.Worklist"
   xmlns="sap.m"
-  xmlns:mvc="sap.ui.core.mvc">
+  xmlns:f="sap.f"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:table="sap.ui.table"
+  xmlns:s000="jblibs.s000"
+  xmlns:s006="jblibs.s006">
 
-<Page>
-  <customHeader>
-    <Toolbar>
-      <content>
-        <IconTabHeader selectedKey="{= ${worklistView>/sIconTHKey}}" select="onIconTabHeaderSelect">
-          <items>
-            <IconTabFilter key="All" text="{i18n>tabHeaderFilterAll}"/>
-            <IconTabFilter key="Deactivated" text="{i18n>tabHeaderFilterDeactivated}"/>
-          </items>
-        </IconTabHeader>
-      </content>
-    </Toolbar>
-  </customHeader>
-  <Table
-    id="table"
-    width="auto"
-    itemPress="onItemSelect"
-    growing="true"
-    growingThreshold="15"
-    growingScrollToLoad="true">
+  <f:DynamicPage
+    id="dynamicPage"
+    fitContent="true"
+    class="sapUiNoContentPadding jbFilterBarHeaderNoPadding"
+    headerPinned="false"
+    preserveHeaderStateOnScroll="false">
 
-    <headerToolbar>
-      <Toolbar height="80px">
-        <Title id="tableHeader"  text="({= ${worklistView>/sCount}})"/>
-        <VBox class="sapUiSmallMargin">
-          <Label text="{i18n>filterDateRange}" labelFor="idFilterDocumentDate"/>
-            <DateRangeSelection
-              id="idFilterDocumentDate"
-              class="idFilterDocumentDate"
-              width="300px"
-              change="_onDateRangeChange"/>
-        </VBox>
-        <ToolbarSpacer />
-        <SearchField
-          id="searchField"
-          tooltip="{i18n>worklistSearchTooltip}"
-          search="onSearch"
-          width="auto">
-        </SearchField>
-        <Button
-          icon="{i18n>iCreate}"
-          type="Emphasized"
-          press="onPressCreate"
-        />
-        <Button
-          icon="{i18n>iRefresh}"
-          type="Transparent"
-          press="onPressRefresh"
-        />
-      </Toolbar>
-    </headerToolbar>
+    <f:header>
+      <f:DynamicPageHeader pinnable="false">
+        <s006:FilterBar
+          id="filterBar"
+          URLAlias="zjblessons_base_Items"
+          firstLine="HeaderID, Created"
+          URLfilter="true"
+          liveMode="true"
+          btnShowHide="true"
+          btnShowHidePressed="true"
+          entityData="zjblessons_base_Items"
+          ParametersModel="annotation"
+          change="onPressFilterBarChange"
+          labelPlacement="placeholder"
+          alignControls="Start"
+          btnMode="standard"
+          secondaryControlID="btnTable"
+          tableID="table">
+            <s006:rightToolbar>
+              <s006:BtnTableSettings
+                id="btnTable"
+                URLAlias="zjblessons_base_Items"
+                URLfilter="true"
+                icon="sap-icon://action-settings"
+                type="Transparent"
+                change="prepareSelect"
+                tableID="table"
+                ParametersModel="annotation"
+                widthColumns="15rem"/>
+            </s006:rightToolbar>
+        </s006:FilterBar>
+      </f:DynamicPageHeader>
+    </f:header>
 
-    <columns>
-      <Column>
-        <Text text="{i18n>DocumentNumber}" />
-      </Column>
-      <Column>
-        <Text text="{i18n>DocumentDate}" />
-      </Column>
-      <Column>
-        <Text text="{i18n>PlantText}" />
-      </Column>
-      <Column>
-        <Text text="{i18n>RegionText}" />
-      </Column>
-      <Column>
-        <Text text="{i18n>Description}" />
-      </Column>
-      <Column>
-        <Text text="{i18n>Created}" />
-      </Column>
-      <Column width="7%">
-        <Text text="" />
-      </Column>
-      <Column width="5%">
-        <Text text="" />
-      </Column>
-    </columns>
-  </Table>
-</Page>
+    <f:content>
+      <NavContainer height="100%" width="100%">
+        <table:Table
+          id="table"
+          rows="{/zjblessons_base_Items}"
+          visibleRowCountMode="Auto"
+          minAutoRowCount="1"
+          enableBusyIndicator="true"
+          busyIndicatorDelay="0"
+          threshold="160"
+          selectionMode="None"
+          selectionBehavior="Row">
+
+          <table:columns>
+            <table:Column id="HeaderID" sortProperty="HeaderID">
+              <Label text="{i18n>HeaderID}"/>
+              <table:template>
+                <Text text="{HeaderID}" />
+              </table:template>
+            </table:Column>
+            <table:Column id="MaterialID" sortProperty="MaterialID">
+              <Label text="{i18n>MaterialID}"/>
+              <table:template>
+                <Text text="{MaterialID}" />
+              </table:template>
+            </table:Column>
+            <table:Column id="GroupID" sortProperty="GroupID">
+              <Label text="{i18n>GroupID}"/>
+              <table:template>
+                <Text text="{GroupID}" />
+              </table:template>
+            </table:Column>
+            <table:Column id="SubGroupID" sortProperty="SubGroupID">
+              <Label text="{i18n>SubGroupID}"/>
+              <table:template>
+                <Text text="{SubGroupID}" />
+              </table:template>
+            </table:Column>
+            <table:Column id="Quantity" sortProperty="Quantity">
+              <Label text="{i18n>Quantity}"/>
+              <table:template>
+                <Text text="{Quantity}" />
+              </table:template>
+            </table:Column>
+            <table:Column id="Price" sortProperty="Price">
+              <Label text="{i18n>Price}"/>
+              <table:template>
+                <Text text="{Price}" />
+              </table:template>
+            </table:Column>
+            <table:Column id="Created" sortProperty="Created">
+              <Label text="{i18n>Created}"/>
+              <table:template>
+                <Text text="{
+                  path: 'Created',
+                  formatter: '.formatter.formatDate'}"
+                />
+              </table:template>
+            </table:Column>
+            <table:Column id="CreatedBy" sortProperty="CreatedByFullName" width="12rem">
+              <Label text="{i18n>CreatedBy}"/>
+              <table:template>
+                <s000:AvatarAndLink
+                  text="{parts: ['CreatedByFullName'], formatter: '.formatter.checkName'}"
+                  clickable="text"
+                  icon="{parts: ['CreatedByAvatar', 'CreatedByFullName'], formatter: '.formatter.checkIcon'}" 
+                  iconColor="{parts: ['CreatedByFullName'], formatter: '.formatter.checkIconColor'}"
+                  size="XXS"
+                />
+              </table:template>
+            </table:Column>
+            <table:Column id="Modified" sortProperty="Modified">
+              <Label text="{i18n>Modified}"/>
+              <table:template>
+                <Text text="{
+                  path: 'Modified',
+                  formatter: '.formatter.formatDateTime'}"
+                />
+              </table:template>
+            </table:Column>
+            <table:Column id="ModifiedBy" sortProperty="ModifiedByFullName" width="12rem">
+              <Label text="{i18n>ModifiedBy}"/>
+              <table:template>
+                <s000:AvatarAndLink
+                  text="{parts: ['ModifiedByFullName'], formatter: '.formatter.checkName'}"
+                  clickable="text"
+                  icon="{parts:['ModifiedByAvatar', 'ModifiedByFullName'], formatter:'.formatter.checkIcon'}"
+                  iconColor="{parts: ['ModifiedByFullName'], formatter: '.formatter.checkIconColor'}"
+                  size="XXS" />
+              </table:template>
+            </table:Column>
+          </table:columns>
+        </table:Table>
+      </NavContainer>
+    </f:content>
+  </f:DynamicPage>
 
 </mvc:View>
